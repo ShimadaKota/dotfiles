@@ -1,0 +1,84 @@
+conky.config = {
+  use_spacer = 'left',
+  pad_percents = 3,
+  background = true,
+  double_buffer = true,
+  font = 'TakaoGothic:style=Regular:size=8.0',
+  use_xft = true,
+  alignment = 'top_right',
+  gap_x = 0,
+  gap_y = 0,
+  own_window_argb_visual = true,
+  own_window_argb_value = 100,
+  own_window_type = 'dock',
+  own_window_hints = 'undecorated, below, skip_taskbar, skip_pager, sticky',
+  own_window = true,
+  update_interval = 5.0,
+  maximum_width = 300,
+  xinerama_head = 4
+}
+
+conky.text = [[
+${color #3AC5BE}Hostname: $color$nodename
+${color #3AC5BE}Kernel: $color$sysname $kernel on $machine
+${color #3AC5BE}Uptime: $color$uptime
+${exec /usr/lib/update-notifier/apt-check --human-readable}
+
+${color #3AC5BE}CPU ${hr 2}
+${exec cat /proc/cpuinfo | grep 'model name' | cut -c 14-55 | uniq }
+${color #3AC5BE} CPU Freq: $alignr$color${freq_g} GHz
+${color #3AC5BE} Core 1  : $color${cpu cpu1}% ${cpubar cpu1}
+${color #3AC5BE} Core 2  : $color${cpu cpu2}% ${cpubar cpu2}
+${color #3AC5BE} Core 3  : $color${cpu cpu3}% ${cpubar cpu3}
+${color #3AC5BE} Core 4  : $color${cpu cpu4}% ${cpubar cpu4}
+${color #3AC5BE} Core 5  : $color${cpu cpu5}% ${cpubar cpu5}
+${color #3AC5BE} Core 6  : $color${cpu cpu6}% ${cpubar cpu6}
+${color #3AC5BE} Core 7  : $color${cpu cpu7}% ${cpubar cpu7}
+${color #3AC5BE} Core 8  : $color${cpu cpu8}% ${cpubar cpu8}
+${color #3AC5BE} CPU Temperatures ${hr 1}
+${color #3AC5BE}Core 1 : $alignr$color${execi 8 sensors | grep "Core 0" | cut -c17-24}
+${color #3AC5BE}Core 2 : $alignr$color${execi 8 sensors | grep "Core 1" | cut -c17-24}
+${color #3AC5BE}Core 3 : $alignr$color${execi 8 sensors | grep "Core 2" | cut -c17-24}
+${color #3AC5BE}Core 4 : $alignr$color${execi 8 sensors | grep "Core 3" | cut -c17-24}
+${color #3AC5BE}${hr 2}
+${color #3AC5BE}Process Name $alignr PID   CPU%   MEM%
+$color ${top name 1}$alignr${top pid 1} ${top cpu 1} ${top mem 1}
+$color ${top name 2}$alignr${top pid 2} ${top cpu 2} ${top mem 2}
+$color ${top name 3}$alignr${top pid 3} ${top cpu 3} ${top mem 3}
+$color ${top name 5}$alignr${top pid 5} ${top cpu 5} ${top mem 5}
+$color ${top name 6}$alignr${top pid 6} ${top cpu 6} ${top mem 6}
+$color ${top name 7}$alignr${top pid 7} ${top cpu 7} ${top mem 7}
+$color ${top name 8}$alignr${top pid 8} ${top cpu 8} ${top mem 8}
+$color ${top name 9}$alignr${top pid 9} ${top cpu 9} ${top mem 9}
+$color ${top name 10}$alignr${top pid 10} ${top cpu 10} ${top mem 10}
+
+${color #3AC5BE}MEMORY ${hr 2}
+${color #3AC5BE}RAM: $alignr${color}${mem}/${memmax}
+${memperc}% ${membar 4}
+${color #3AC5BE}Swap: $alignr${color}${swap}/${swapmax}
+${swapperc}% ${swapbar 4}
+${color #3AC5BE}${memgraph F57900 FCAF3E -t}
+${color #3AC5BE}GPU ${hr 2}
+${color #3AC5BE}${exec nvidia-smi --query-gpu=gpu_name --format=csv,noheader,nounits}
+${color #3AC5BE}GPU Temperature: $alignr$color${execi 60 nvidia-settings -query [gpu:0]/GPUCoreTemp -t} °C
+${color #3AC5BE}GPU Utilization: $alignr$color${exec nvidia-smi | grep % | cut -c 61-64}
+${color #3AC5BE}VRAM Utilization: $alignr$color${exec nvidia-smi | grep % | cut -c 37-54}
+${color #3AC5BE}GPU Power Draw: $alignr$color${exec nvidia-smi | grep % | cut -c 21-31}
+
+${color #3AC5BE}Filesystems ${hr 2}
+${color #3AC5BE} / $alignr$color${fs_used /}/${fs_size /}
+${color #3AC5BE} /home $alignr$color${fs_used /home}/${fs_size /home}
+
+${color #3AC5BE}Disk Read/Write ${hr 2}
+${color #3AC5BE} Read  : $alignr$color${diskio_read /dev/sda}
+${color #3AC5BE} Write : $alignr$color${diskio_write /dev/sda}
+
+${color #3AC5BE}Networking ${hr 2}
+${color #3AC5BE} enp3s0
+${color #3AC5BE}  Up   : $color${upspeedf enp3s0}$alignr\
+${color #3AC5BE}  Down : $color${downspeedf enp3s0}
+${color #3AC5BE}  Up total $color${totalup enp3s0}$alignr\
+${color #3AC5BE}  Down total $color${totaldown enp3s0}
+${upspeedgraph enp3s0 30,120 66B266 008000 -t}$alignr\
+${downspeedgraph enp3s0 30,120 FF4C4C FF0000 -t}
+]]

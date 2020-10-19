@@ -1,0 +1,116 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'LeafCage/foldCC'
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+hook_add = '''
+    if !exists('g:tcomment_types')
+        let g:tcomment_types = {}
+    endif
+    let g:tcomment_types['eruby'] = '<%# %s %>'
+    let g:tcomment_types['erb'] = '<%# %s %>'
+    let g:tcomment_types['scss'] = '/* %s */'
+    let g:tcomment_types['pug'] = '// %s'
+    let g:tcomment_types['toml'] = '# %s'
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+    nnoremap <silent><C-n> :NERDTreeToggle<CR>
+    nnoremap <silent><S-j> gt
+    nnoremap <silent><S-k> gT
+    let NERDTreeBookmarksFile = expand('~/.vim/NERDTreeBookmarks')
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+    let g:lightline = {
+        \ 'colorscheme': 'deus'
+        \ }
+    let s:term_red = 204
+    let s:term_green = 114
+    let s:term_yellow = 180
+    let s:term_blue = 39
+    let s:orange = 172
+    let s:term_white = 145
+    let s:term_black = 235
+    let s:term_grey = 236
+    let s:term_purple = 98
+    let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
+    let s:p.normal.left = [ [ '#292c33', '#98c379', s:term_black, s:term_green, 'bold' ], [ '#98c379', '#292c33', s:term_green, s:term_black ] ]
+    let s:p.normal.right = [ [ '#292c33', '#98c379', s:term_black, s:term_green ], [ '#abb2bf', '#3e4452', s:term_white, s:term_grey ], [ '#98c379', '#292c33', s:term_green, s:term_black ] ]
+    let s:p.inactive.right = [ [ '#292c33', '#875fdf', s:term_black, s:term_purple], [ '#875fdf', '#292c33', s:term_purple, s:term_black ] ]
+    let s:p.inactive.left = s:p.inactive.right[1:]
+    let s:p.insert.left = [ [ '#292c33', '#61afef', s:term_black, s:term_blue, 'bold' ], [ '#61afef', '#292c33', s:term_blue, s:term_black ] ]
+    let s:p.insert.right = [ [ '#292c33', '#61afef', s:term_black, s:term_blue ], [ '#ABB2BF', '#3E4452', s:term_white, s:term_grey ], [ '#61afef', '#292c33', s:term_blue, s:term_black ] ]
+    let s:p.replace.left = [ [ '#292c33', '#e06c75', s:term_black, s:term_red, 'bold' ], [ '#e06c75', '#292c33', s:term_red, s:term_black ] ]
+    let s:p.replace.right = [ [ '#292c33', '#e06c75', s:term_black, s:term_red, 'bold' ], s:p.normal.right[1], [ '#e06c75', '#292c33', s:term_red, s:term_black ] ]
+    let s:p.visual.left = [ [ '#292c33', '#df8700', s:term_black, s:orange, 'bold' ], [ '#df8700', '#292c33', s:orange, s:term_black ] ]
+    let s:p.visual.right = [ [ '#292c33', '#df8700', s:term_black, s:orange, 'bold' ], s:p.normal.right[1], [ '#df8700', '#292c33', s:orange, s:term_black ] ]
+    let s:p.normal.middle = [ [ '#abb2bf', '#292c33', s:term_white, s:term_black ] ]
+    let s:p.insert.middle = s:p.normal.middle
+    let s:p.replace.middle = s:p.normal.middle
+    let s:p.tabline.left = [ s:p.normal.left[1] ]
+    let s:p.tabline.tabsel = [ s:p.normal.left[0] ]
+    let s:p.tabline.middle = s:p.normal.middle
+    let s:p.tabline.right = [ s:p.normal.left[1] ]
+    let s:p.normal.error = [ [ '#292c33', '#e06c75', s:term_black, s:term_red ] ]
+    let s:p.normal.warning = [ [ '#292c33', '#e5c07b', s:term_black, s:term_yellow ] ]
+    let g:lightline#colorscheme#deus#palette = lightline#colorscheme#fill(s:p)
+'''
+
+[[plugins]]
+repo = 'guns/xterm-color-table.vim'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+hook_add = '''
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
+    set encoding=utf-8
+    let s:rspec_red = 'FE405F'
+    let s:git_orange = 'F54D27'
+    let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+    let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
+    let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
+    let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
+    let g:webdevicons_conceal_nerdtree_brackets = 1
+    let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
+    let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
+    if exists('g:loaded_webdevicons')
+        call webdevicons#refresh()
+    endif
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+    nmap<silent> go :GitGutterToggle<CR>
+    nmap<silent> gh :GitGutterLineHighlightsToggle<CR>
+    let g:gitgutter_override_sign_column_highlight = 0
+'''
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+    let g:indentLine_faster = 1
+    let g:indentLine_color_term = 63
+
+'''
+[[plugins]]
+repo = 'simeji/winresizer'
+hook_add = '''
+    let g:winresizer_vert_resize = 1
+    let g:winresizer_horiz_resize = 1
+    let g:winresizer_start_key = '<S-E>'
+'''

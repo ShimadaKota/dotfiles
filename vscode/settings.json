@@ -1,0 +1,115 @@
+{
+    "diffEditor.renderSideBySide": false, // Git の差分を行内に表示
+    "editor.colorDecorators": false, // カラーデコレーターを非表示
+    "editor.formatOnPaste": true, // ペースト時に自動でフォーマット
+    "editor.formatOnSave": true, // ファイル保存時に自動でフォーマット
+    "editor.formatOnType": true, // 入力した行を自動でフォーマット
+    "editor.minimap.renderCharacters": false, // ミニマップの表示文字をブロックに変更
+    "editor.minimap.showSlider": "always", // 表示領域をミニマップで常にハイライト
+    "editor.multiCursorModifier": "ctrlCmd", // マウスでの複数選択時の修飾キーを変更
+    "editor.renderControlCharacters": true, // 制御文字を表示
+    "editor.renderLineHighlight": "all", // 選択行を行番号含めすべてハイライト
+    "editor.renderWhitespace": "all", // 半角スペースを常に表示
+    "editor.snippetSuggestions": "top", // Emmet などのスニペット候補を優先して表示
+    "editor.tabSize": 4, // タブのサイズ変更
+    "editor.wordWrap": "on", // エディターの幅で折り返し
+    "editor.acceptSuggestionOnEnter": "off", //エンターで補完候補を選択しない
+    "explorer.confirmDelete": false, // ファイル削除時の確認を表示しない
+    "files.associations": { // ファイルと言語の関連付けを変更
+        ".*lintrc": "json"
+    },
+    "files.exclude": { // エクスプローラーから非表示にするファイル
+        "**/*.map": true,
+        "**/node_modules": true
+    },
+    "files.insertFinalNewline": true, // ファイルの保存時に末尾を改行
+    "files.trimFinalNewlines": true, // ファイルの保存時に最終行以降をトリミング
+    "files.trimTrailingWhitespace": true, // ファイルの保存時に行末の空白をトリミング
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false // Markdown のファイルは行末の空白をトリミングしない
+    },
+    "html.format.contentUnformatted": "pre, code, textarea, title, h1, h2, h3, h4, h5, h6, p", // タグ内の記述はフォーマットしない
+    "html.format.extraLiners": "", // head, body, /html タグの前に改行を入れない
+    "html.format.unformatted": null, // フレージング・コンテンツ（旧インライン要素のようなタグ）はフォーマットしない
+    "html.format.wrapLineLength": 0, // 行の文字数制限を無くし自動で改行させない
+    "search.exclude": { // 検索対象外にするファイル設定（ files.exclude のファイルも含む）
+        "**/tmp": true
+    },
+    "window.openFoldersInNewWindow": "on", // 新規ワークスペースを別ウインドウで開く
+    "window.title": "${activeEditorMedium}${separator}${rootName}", // ウインドウ上部に表示する文字列の設定
+    "workbench.editor.labelFormat": "short", // タブに表示する文字列の設定
+    "workbench.editor.tabSizing": "shrink", // タブの表示設定
+    "workbench.startupEditor": "none", // 立ち上げたときにウェルカムページを表示しない
+    "workbench.colorTheme": "Visual Studio Dark", // カラーテーマ
+    "workbench.iconTheme": "seti", // アイコンテーマ
+    "terminal.integrated.inheritEnv": false, // Linux用
+    "python.pythonPath": " // pythonのpath
+    //Tex
+    "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや", // 単語の区切り文字
+    "latex-workshop.latex.tools": [ // latex tools
+        {
+            "command": "ptex2pdf",
+            "args": [
+                "-l",
+                "-ot",
+                "-kanji=utf8 -synctex=1",
+                "-interaction=nonstopmode",
+                "%DOC%"
+            ],
+            "name": "ptex2pdf"
+        }
+    ],
+    "latex-workshop.latex.recipes": [ // latex recipes
+        {
+            "name": "ptex2pdf",
+            "tools": [
+                "ptex2pdf",
+                "ptex2pdf"
+            ]
+        }
+    ],
+    "latex-workshop.latex.clean.fileTypes": [ // 削除する補助ファイルの種類
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.synctex.gz",
+        "_minted*",
+        "*.nav",
+        "*.snm",
+        "*.vrb"
+    ],
+    "latex-workshop.view.pdf.viewer": "tab", // pdfをtabで表示
+    "latex-workshop.latex.autoClean.run": true, // 補助ファイルを自動で削除
+    "latex-workshop.latex.autoBuild.run": false, // 自動でビルドしない
+    //vim
+    "vim.vimrc.enable": true, //vimrc有効化
+    "vim.vimrc.path": // vimrcのpath
+    "vim.insertModeKeyBindings": [ // keybindを変える例
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.hlsearch": true // 検索したときにハイライト
+}
